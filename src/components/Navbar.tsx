@@ -23,7 +23,7 @@ export default function Navbar() {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className={`pointer-events-auto flex items-center justify-start md:justify-center px-6 py-3 rounded-full transition-all duration-300 w-[90%] md:w-fit border border-white/10
+          className={`pointer-events-auto relative flex items-center justify-start md:justify-center px-6 py-3 rounded-full transition-all duration-300 w-[90%] md:w-fit border border-white/10
             ${scrolled ? "bg-black/75 backdrop-blur-xl" : "bg-transparent"}`}
         >
           {/* Desktop Links Left */}
@@ -40,7 +40,7 @@ export default function Navbar() {
                   src="/media/logoac.png" 
                   alt="Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain object-left md:object-center"
                   priority
                 />
               </div>
