@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Sony Music",
+    "logo_white": "/media/logosempresas/LogoSony_1.png",
+    "logo_color": "/media/logosempresas/LogoSony_2.png"
+  },
+  {
+    "name": "Warner",
+    "logo_white": "/media/logosempresas/LogoWarner_2.png",
+    "logo_color": "/media/logosempresas/LogoWarner_1.png"
+  },
+  {
+    "name": "Universal",
+    "logo_white": "/media/logosempresas/LogoUniversal_1.png",
+    "logo_color": "/media/logosempresas/LogoUniversal_1.png"
+  },
+  {
+    "name": "33",
+    "logo_white": "/media/logosempresas/Logo33_1.png",
+    "logo_color": "/media/logosempresas/Logo33_2.png"
+  }
+]

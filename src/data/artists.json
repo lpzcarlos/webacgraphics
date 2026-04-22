@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "jhayco",
+    "name": "Jhayco",
+    "image": "/media/iconosartistas/jhaycoIcono.png"
+  },
+  {
+    "slug": "juan-magan",
+    "name": "Juan Magán",
+    "image": "/media/iconosartistas/juanmaganIcono.png"
+  },
+  {
+    "slug": "myke-towers",
+    "name": "Myke Towers",
+    "image": "/media/iconosartistas/myketowersIcono.png"
+  },
+  {
+    "slug": "omar-montes",
+    "name": "Omar Montes",
+    "image": "/media/iconosartistas/omarmontesIcono.png"
+  },
+  {
+    "slug": "yan-block",
+    "name": "Yan Block",
+    "image": "/media/iconosartistas/yanblockIcono.png"
+  }
+]
