@@ -8,7 +8,6 @@ import { useRef, useState, useEffect } from "react";
 export default function MarqueeArtists() {
   const duplicatedArtists = [...artistsData, ...artistsData];
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [contentWidth, setContentWidth] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -19,17 +18,6 @@ export default function MarqueeArtists() {
   useEffect(() => {
     if (!scrollContainerRef.current) return;
     const scrollEl = scrollContainerRef.current;
-
-    const measure = () => {
-      // scrollWidth is the total width including the two duplicated segments.
-      // So one repeating segment (half of the whole content) is scrollWidth / 2.
-      setContentWidth(scrollEl.scrollWidth / 2);
-    };
-
-    measure();
-    // Re-measure after initial render to ensure fonts/images are loaded
-    const timeout = setTimeout(measure, 500);
-    window.addEventListener("resize", measure);
 
     // Speed in pixels per millisecond
     const speed = 0.05;
@@ -63,8 +51,6 @@ export default function MarqueeArtists() {
     animationFrameId = requestAnimationFrame(tick);
 
     return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("resize", measure);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isHovered, isDragging]);
@@ -108,7 +94,7 @@ export default function MarqueeArtists() {
           ref={scrollContainerRef}
           className="flex w-full whitespace-nowrap items-center overflow-x-auto py-8 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={(e) => {
+          onMouseLeave={() => {
             setIsHovered(false);
             onMouseUpOrLeave();
           }}
