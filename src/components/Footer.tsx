@@ -21,7 +21,9 @@ export default function Footer() {
         <div className="flex gap-6">
           <Link href="#work" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Work</Link>
           <Link href="#artists" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Artists</Link>
+          <Link href="#clients" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Clients</Link>
           <Link href="#contact" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Contact</Link>
+          <Link href="https://www.instagram.com/acgraphicses" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Instagram</Link>
         </div>
 
         {/* Copyright */}

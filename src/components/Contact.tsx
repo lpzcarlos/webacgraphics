@@ -10,7 +10,7 @@ export default function Contact() {
 
   const handleSubmit = () => {
     if (!formData.name || !formData.email || !formData.project) return;
-    
+
     setIsSubmitting(true);
     // Simulate API call
     setTimeout(() => {
@@ -23,7 +23,7 @@ export default function Contact() {
   return (
     <section id="contact" className="w-full bg-bg-surface py-20 md:py-[120px] px-6 md:px-12">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-        
+
         {/* Left Side */}
         <div className="lg:w-1/2 flex flex-col justify-between">
           <div>
@@ -34,18 +34,6 @@ export default function Contact() {
               Tell us about your project. We&apos;ll respond within 24 hours.
             </p>
           </div>
-
-          <div className="flex gap-4 mt-12">
-            {["Instagram", "Behance", "LinkedIn"].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="px-6 py-2 rounded-full border border-border text-sm text-secondary hover:text-white hover:border-white transition-colors"
-              >
-                {social}
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* Right Side / Form */}
@@ -54,7 +42,7 @@ export default function Contact() {
             <div className="h-full flex flex-col items-center justify-center text-center py-20">
               <h3 className="text-2xl font-bold text-white mb-2">Message Sent</h3>
               <p className="text-secondary">We will be in touch shortly.</p>
-              <button 
+              <button
                 onClick={() => setSubmitted(false)}
                 className="mt-8 text-sm uppercase tracking-widest text-muted hover:text-white underline underline-offset-4"
               >
