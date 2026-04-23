@@ -6,8 +6,8 @@
   },
   {
     "name": "Warner",
-    "logo_white": "/media/logosempresas/LogoWarner_2.png",
-    "logo_color": "/media/logosempresas/LogoWarner_1.png"
+    "logo_white": "/media/logosempresas/LogoWarner_1.png",
+    "logo_color": "/media/logosempresas/LogoWarner_2.png"
   },
   {
     "name": "Universal",
@@ -18,5 +18,65 @@
     "name": "33",
     "logo_white": "/media/logosempresas/Logo33_1.png",
     "logo_color": "/media/logosempresas/Logo33_2.png"
+  },
+  {
+    "name": "ReggaetonEU",
+    "logo_white": "/media/logosempresas/LogoReggaetonEU_1.png",
+    "logo_color": "/media/logosempresas/LogoReggaetonEU_2.png"
+  },
+  {
+    "name": "Barones",
+    "logo_white": "/media/logosempresas/LogoBarones_1.png",
+    "logo_color": "/media/logosempresas/LogoBarones_2.png"
+  },
+  {
+    "name": "BMG",
+    "logo_white": "/media/logosempresas/LogoBMG_1.png",
+    "logo_color": "/media/logosempresas/LogoBMG_2.png"
+  },
+  {
+    "name": "ConcertTour",
+    "logo_white": "/media/logosempresas/LogoConcertTour_1.png",
+    "logo_color": "/media/logosempresas/LogoConcertTour_1.png"
+  },
+  {
+    "name": "Eleven",
+    "logo_white": "/media/logosempresas/LogoEleven_1.png",
+    "logo_color": "/media/logosempresas/LogoEleven_2.png"
+  },
+  {
+    "name": "Lionfish",
+    "logo_white": "/media/logosempresas/LogoLionfish_1.png",
+    "logo_color": "/media/logosempresas/LogoLionfish_2.png"
+  },
+  {
+    "name": "LaFamilia",
+    "logo_white": "/media/logosempresas/LogoLaFamilia_1.png",
+    "logo_color": "/media/logosempresas/LogoLaFamilia_1.png"
+  },
+  {
+    "name": "Madmusic",
+    "logo_white": "/media/logosempresas/LogoMadMusic_1.png",
+    "logo_color": "/media/logosempresas/LogoMadMusic_1.png"
+  },
+  {
+    "name": "NIU",
+    "logo_white": "/media/logosempresas/LogoNIU_1.png",
+    "logo_color": "/media/logosempresas/LogoNIU_2.png"
+  },
+  {
+    "name": "Rabat",
+    "logo_white": "/media/logosempresas/LogoRabat_1.png",
+    "logo_color": "/media/logosempresas/LogoRabat_2.png"
+  },
+  {
+    "name": "SetMeFree",
+    "logo_white": "/media/logosempresas/LogoSetMeFree_1.png",
+    "logo_color": "/media/logosempresas/LogoSetMeFree_2.png"
+  },
+  {
+    "name": "Arpa",
+    "logo_white": "/media/logosempresas/LogoArpa_1.png",
+    "logo_color": "/media/logosempresas/LogoArpa_1.png"
   }
 ]

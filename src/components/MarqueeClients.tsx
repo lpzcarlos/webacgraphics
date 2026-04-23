@@ -45,23 +45,23 @@ function ClientLogo({ client }: { client: Client }) {
 
   return (
     <div
-      className="relative flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center w-[120px] md:w-[150px] h-[80px]"
+      className="relative flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center h-[50px] md:h-[70px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Container for standard stacking context */}
-      <div className="relative w-full h-full transition-transform duration-300 ease-out" style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}>
-        <Image
+      <div className="relative h-full flex items-center justify-center transition-transform duration-300 ease-out" style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}>
+        {/* Usamos img natural para que respete auto-width perfectamente independiente del aspecto de cada logo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={client.logo_white}
           alt={`${client.name} logo`}
-          fill
-          className={`object-contain transition-opacity duration-300 mix-blend-screen ${hovered ? "opacity-0" : "opacity-50"}`}
+          className={`h-full w-auto object-contain transition-opacity duration-300 mix-blend-screen ${hovered ? "opacity-0 absolute" : "opacity-50 relative"}`}
         />
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={client.logo_color}
           alt={`${client.name} logo color`}
-          fill
-          className={`object-contain transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
+          className={`h-full w-auto object-contain transition-opacity duration-300 ${hovered ? "opacity-100 relative" : "opacity-0 absolute"}`}
         />
       </div>
     </div>

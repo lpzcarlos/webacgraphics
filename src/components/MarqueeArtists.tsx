@@ -24,18 +24,25 @@ export default function MarqueeArtists() {
     let lastTime = performance.now();
     let animationFrameId: number;
 
+    // Accumulator to handle fractional scroll values (browsers ignore fractional scrollLeft)
+    let moveAccumulator = 0;
+
     const tick = (time: number) => {
       const delta = time - lastTime;
       lastTime = time;
 
       // Auto-scroll logic: only when not hovered and not dragging
       if (!isHovered && !isDragging) {
-        // Decrease scrollLeft to shift elements to the right
-        scrollEl.scrollLeft -= speed * delta;
+        moveAccumulator += speed * delta;
+        if (moveAccumulator >= 1) {
+          const move = Math.floor(moveAccumulator);
+          moveAccumulator -= move;
+          // Decrease scrollLeft to shift elements to the right
+          scrollEl.scrollLeft -= move;
+        }
       }
 
       // Infinite wrapping logic
-      // Because we duplicated elements to create 2 halves, we wrap securely around the halves.
       const currentWidth = scrollEl.scrollWidth / 2;
       if (currentWidth > 0) {
         if (scrollEl.scrollLeft <= 0) {
