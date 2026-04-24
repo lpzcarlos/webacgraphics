@@ -1,31 +1,116 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import clientsData from "../data/clients.json";
 
 export default function MarqueeClients() {
-  // We duplicate the clients array to ensure a seamless infinite scroll
   const duplicatedClients = [...clientsData, ...clientsData];
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Dragging states
+  const startX = useRef(0);
+  const mouseDragThreshold = useRef(0);
+
+  useEffect(() => {
+    if (!scrollContainerRef.current) return;
+    const scrollEl = scrollContainerRef.current;
+
+    // Speed in pixels per millisecond
+    const speed = 0.05;
+    let lastTime = performance.now();
+    let animationFrameId: number;
+
+    let moveAccumulator = 0;
+
+    const tick = (time: number) => {
+      const delta = time - lastTime;
+      lastTime = time;
+
+      // Auto-scroll logic: only when not hovered and not dragging
+      if (!isHovered && !isDragging) {
+        moveAccumulator += speed * delta;
+        if (moveAccumulator >= 1) {
+          const move = Math.floor(moveAccumulator);
+          moveAccumulator -= move;
+          // To move RIGHT TO LEFT, we INCREASE scrollLeft
+          scrollEl.scrollLeft += move;
+        }
+      }
+
+      // Infinite wrapping logic
+      const currentWidth = scrollEl.scrollWidth / 2;
+      if (currentWidth > 0) {
+        if (scrollEl.scrollLeft >= currentWidth) {
+          scrollEl.scrollLeft -= currentWidth;
+        } else if (scrollEl.scrollLeft <= 0) {
+          scrollEl.scrollLeft += currentWidth;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    animationFrameId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isHovered, isDragging]);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    startX.current = e.pageX;
+    mouseDragThreshold.current = 0;
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX.current) * 1.5; 
+    mouseDragThreshold.current += Math.abs(x - startX.current);
+    startX.current = x;
+    scrollContainerRef.current.scrollLeft -= walk;
+  };
+
+  const onMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (mouseDragThreshold.current > 5) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
 
   return (
-    <section id="clients" className="w-full py-20 overflow-hidden bg-background">
+    <section id="clients" className="w-full py-20 overflow-hidden bg-background select-none">
       <h3 className="text-center text-sm font-semibold tracking-widest text-muted uppercase mb-12">
         Trusted By
       </h3>
 
-      <div className="relative w-full flex overflow-hidden">
-        {/*
-          We create two identical blocks animated to the left. 
-          Use animate-scroll-right or scroll-left. 
-          Prompt says "RIGHT TO LEFT", so standard leftward translation.
-        */}
-        <div className="flex animate-scroll-left w-max whitespace-nowrap items-center hover:[animation-play-state:paused]">
+      <div className="relative w-full overflow-hidden">
+        <div
+          ref={scrollContainerRef}
+          className="flex w-full whitespace-nowrap items-center overflow-x-auto py-4 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            onMouseUpOrLeave();
+          }}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUpOrLeave}
+          onClickCapture={onClickCapture}
+        >
           {duplicatedClients.map((client, idx) => (
-            <ClientLogo key={idx} client={client} />
+            <ClientLogo key={`c-${idx}`} client={client} />
           ))}
-          {/* Third copy just to be ultra safe for wide screens */}
           {duplicatedClients.map((client, idx) => (
-            <ClientLogo key={`extra-${idx}`} client={client} />
+            <ClientLogo key={`d-${idx}`} client={client} />
           ))}
         </div>
       </div>
@@ -44,23 +129,24 @@ function ClientLogo({ client }: { client: Client }) {
 
   return (
     <div
-      className="relative flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center h-[50px] md:h-[70px]"
+      className="relative flex-shrink-0 mx-4 md:mx-8 flex items-center justify-center h-[50px] md:h-[70px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative h-full flex items-center justify-center transition-transform duration-300 ease-out" style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}>
-        {/* Usamos img natural para que respete auto-width perfectamente independiente del aspecto de cada logo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={client.logo_white}
           alt={`${client.name} logo`}
-          className={`h-full w-auto object-contain transition-opacity duration-300 mix-blend-screen ${hovered ? "opacity-0 absolute" : "opacity-50 relative"}`}
+          draggable={false}
+          className={`h-full w-auto object-contain transition-opacity duration-300 mix-blend-screen pointer-events-none ${hovered ? "opacity-0 absolute" : "opacity-50 relative"}`}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={client.logo_color}
           alt={`${client.name} logo color`}
-          className={`h-full w-auto object-contain transition-opacity duration-300 ${hovered ? "opacity-100 relative" : "opacity-0 absolute"}`}
+          draggable={false}
+          className={`h-full w-auto object-contain transition-opacity duration-300 pointer-events-none ${hovered ? "opacity-100 relative" : "opacity-0 absolute"}`}
         />
       </div>
     </div>

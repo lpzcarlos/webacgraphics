@@ -6,15 +6,17 @@ import artistsData from "@/data/artists.json";
 import worksData from "@/data/works.json";
 import Footer from "@/components/Footer";
 
+const allArtists = [...artistsData.row1, ...artistsData.row2];
+
 // Generate static params if preferred for SSG
 export function generateStaticParams() {
-  return artistsData.map((artist) => ({
+  return allArtists.map((artist) => ({
     slug: artist.slug,
   }));
 }
 
 export default function ArtistPage({ params }: { params: { slug: string } }) {
-  const artist = artistsData.find((a) => a.slug === params.slug);
+  const artist = allArtists.find((a) => a.slug === params.slug);
 
   if (!artist) {
     notFound();

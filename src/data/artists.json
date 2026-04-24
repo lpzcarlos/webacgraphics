@@ -1,27 +1,121 @@
-[
-  {
-    "slug": "jhayco",
-    "name": "Jhayco",
-    "image": "/media/iconosartistas/jhaycoIcono.png"
-  },
-  {
-    "slug": "juan-magan",
-    "name": "Juan Magán",
-    "image": "/media/iconosartistas/juanmaganIcono.png"
-  },
-  {
-    "slug": "myke-towers",
-    "name": "Myke Towers",
-    "image": "/media/iconosartistas/myketowersIcono.png"
-  },
-  {
-    "slug": "omar-montes",
-    "name": "Omar Montes",
-    "image": "/media/iconosartistas/omarmontesIcono.png"
-  },
-  {
-    "slug": "yan-block",
-    "name": "Yan Block",
-    "image": "/media/iconosartistas/yanblockIcono.png"
-  }
-]
+{
+  "row1": [
+    {
+      "slug": "anuel-aa",
+      "name": "Anuel AA",
+      "image": "/media/iconosartistas/1Anuel.jpg"
+    },
+    {
+      "slug": "omar-montes",
+      "name": "Omar Montes",
+      "image": "/media/iconosartistas/2OmarMontes.jpg"
+    },
+    {
+      "slug": "feid",
+      "name": "Feid",
+      "image": "/media/iconosartistas/3Feid.jpg"
+    },
+    {
+      "slug": "juan-magan",
+      "name": "Juan Magan",
+      "image": "/media/iconosartistas/4JuanMagan.jpg"
+    },
+    {
+      "slug": "ozuna",
+      "name": "Ozuna",
+      "image": "/media/iconosartistas/5Ozuna.jpg"
+    },
+    {
+      "slug": "ana-mena",
+      "name": "Ana Mena",
+      "image": "/media/iconosartistas/6AnaMena.jpg"
+    },
+    {
+      "slug": "myke-towers-2",
+      "name": "Myke Towers",
+      "image": "/media/iconosartistas/7MykeTowers.jpg"
+    },
+    {
+      "slug": "india-martinez",
+      "name": "India Martinez",
+      "image": "/media/iconosartistas/8IndiaMartinez.jpg"
+    },
+    {
+      "slug": "duki",
+      "name": "Duki",
+      "image": "/media/iconosartistas/9Duki.jpg"
+    },
+    {
+      "slug": "adexe-y-nau",
+      "name": "Adexe Y Nau",
+      "image": "/media/iconosartistas/10AdexeYNau.jpg"
+    },
+    {
+      "slug": "lunay",
+      "name": "Lunay",
+      "image": "/media/iconosartistas/11Lunay.jpg"
+    }
+  ],
+  "row2": [
+    {
+      "slug": "vanesa-martin",
+      "name": "Vanesa Martín",
+      "image": "/media/iconosartistas/12VanesaMartin.jpg"
+    },
+    {
+      "slug": "farruko",
+      "name": "Farruko",
+      "image": "/media/iconosartistas/13Farruko.jpg"
+    },
+    {
+      "slug": "maikel-de-la-calle",
+      "name": "Maikel De La Calle",
+      "image": "/media/iconosartistas/14MaikelDeLaCalle.jpg"
+    },
+    {
+      "slug": "jhayco",
+      "name": "Jhayco",
+      "image": "/media/iconosartistas/15Jhayco.jpg"
+    },
+    {
+      "slug": "pastora",
+      "name": "Pastora",
+      "image": "/media/iconosartistas/16Pastora.jpg"
+    },
+    {
+      "slug": "clarent",
+      "name": "Clarent",
+      "image": "/media/iconosartistas/17Clarent.jpg"
+    },
+    {
+      "slug": "am",
+      "name": "AM",
+      "image": "/media/iconosartistas/18AM.jpg"
+    },
+    {
+      "slug": "young-miko",
+      "name": "Young Miko",
+      "image": "/media/iconosartistas/19YoungMiko.jpg"
+    },
+    {
+      "slug": "arce",
+      "name": "Arce",
+      "image": "/media/iconosartistas/20Arce.jpg"
+    },
+    {
+      "slug": "yan-block",
+      "name": "Yan Block",
+      "image": "/media/iconosartistas/21YanBlock.jpg"
+    },
+    {
+      "slug": "milo-j",
+      "name": "Milo J",
+      "image": "/media/iconosartistas/22MiloJ.jpg"
+    },
+    {
+      "slug": "depol",
+      "name": "Depol",
+      "image": "/media/iconosartistas/23Depol.jpg"
+    }
+  ]
+}
