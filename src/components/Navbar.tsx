@@ -18,16 +18,16 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-6 w-full flex justify-center z-50 pointer-events-none">
+      <div className="fixed top-10 w-full flex justify-center z-50 pointer-events-none">
         <motion.nav
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className={`pointer-events-auto relative flex items-center justify-start md:justify-center px-6 py-3 rounded-full transition-all duration-300 w-[90%] md:w-fit border border-white/10
+          className={`pointer-events-auto relative flex items-center justify-start md:justify-center px-8 py-4 rounded-full transition-all duration-300 w-[90%] md:w-fit border border-white/10
             ${scrolled ? "bg-black/75 backdrop-blur-xl" : "bg-transparent"}`}
         >
           {/* Desktop Links Left */}
-          <div className="hidden md:flex w-[160px] justify-end items-center gap-6">
+          <div className="hidden md:flex w-[200px] justify-end items-center gap-6">
             <NavLink href="#work">Work</NavLink>
             <NavLink href="#artists">Artists</NavLink>
           </div>
@@ -35,9 +35,9 @@ export default function Navbar() {
           {/* Logo Center (Left on mobile) */}
           <div className="flex justify-center flex-shrink-0 md:mx-8">
             <Link href="/">
-              <div className="relative w-[120px] h-[30px] flex items-center justify-center">
-                <Image 
-                  src="/media/logoac.png" 
+              <div className="relative w-[240px] h-[60px] flex items-center justify-center">
+                <Image
+                  src="/media/logoac.png"
                   alt="Logo"
                   fill
                   className="object-contain object-left md:object-center"
@@ -48,14 +48,14 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Links Right */}
-          <div className="hidden md:flex w-[160px] justify-start items-center gap-6">
+          <div className="hidden md:flex w-[200px] justify-start items-center gap-6">
             <NavLink href="#clients">Clients</NavLink>
             <NavLink href="#contact">Contact</NavLink>
           </div>
 
           {/* Mobile Hamburger */}
-          <button 
-            className="md:hidden text-white absolute right-6" 
+          <button
+            className="md:hidden text-white absolute right-6"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

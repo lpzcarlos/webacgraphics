@@ -24,7 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-[100dvh] pt-32 pb-24 flex flex-col items-center justify-center overflow-hidden bg-background">
+    <section className="relative w-full min-h-[100dvh] pt-48 pb-24 flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Background Textures */}
       <div className="noise-bg"></div>
       <div className="scanline"></div>

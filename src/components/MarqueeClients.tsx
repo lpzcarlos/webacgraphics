@@ -69,7 +69,7 @@ export default function MarqueeClients() {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX;
-    const walk = (x - startX.current) * 1.5; 
+    const walk = (x - startX.current) * 1.5;
     mouseDragThreshold.current += Math.abs(x - startX.current);
     startX.current = x;
     scrollContainerRef.current.scrollLeft -= walk;

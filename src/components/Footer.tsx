@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         {/* Links */}
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
           <Link href="#work" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Work</Link>
           <Link href="#artists" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Artists</Link>
           <Link href="#clients" className="text-secondary hover:text-white text-xs uppercase tracking-widest font-semibold transition-colors">Clients</Link>
