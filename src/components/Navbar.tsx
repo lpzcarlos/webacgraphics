@@ -35,7 +35,7 @@ export default function Navbar() {
           {/* Logo Center (Left on mobile) */}
           <div className="flex justify-center flex-shrink-0 md:mx-8">
             <Link href="/">
-              <div className="relative w-[240px] h-[60px] flex items-center justify-center">
+              <div className="relative w-[160px] h-[40px] md:w-[240px] md:h-[60px] flex items-center justify-center">
                 <Image
                   src="/media/logoac.png"
                   alt="Logo"
