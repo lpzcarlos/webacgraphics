@@ -28,7 +28,7 @@ export default function Navbar() {
         >
           {/* Desktop Links Left */}
           <div className="hidden md:flex w-[200px] justify-end items-center gap-6">
-            <NavLink href="#work">Work</NavLink>
+            <NavLink href="#work">Works</NavLink>
             <NavLink href="#artists">Artists</NavLink>
           </div>
 

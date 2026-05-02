@@ -24,7 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-[100dvh] pt-48 pb-24 flex flex-col items-center justify-center overflow-hidden bg-background">
+    <section className="relative w-full min-h-[100dvh] pt-48 pb-24 flex flex-col items-center justify-center bg-background">
       {/* Background Textures */}
       <div className="noise-bg"></div>
       <div className="scanline"></div>
@@ -46,14 +46,14 @@ export default function Hero() {
           animate="show"
           className="flex flex-col items-center gap-1 md:gap-4 select-none"
         >
-          <div className="flex gap-3 md:gap-8 overflow-hidden">
+          <div className="flex gap-3 md:gap-8 overflow-y-hidden">
             {headlineWords1.map((word, i) => (
               <motion.span key={i} variants={item} className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter">
                 {word}
               </motion.span>
             ))}
           </div>
-          <div className="flex gap-3 md:gap-8 overflow-hidden">
+          <div className="flex gap-3 md:gap-8 overflow-y-hidden">
             {headlineWords2.map((word, i) => (
               <motion.span key={i} variants={item} className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter">
                 {word}
