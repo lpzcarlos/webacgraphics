@@ -72,7 +72,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 pt-20"
           >
-            <MobileNavLink href="#work" onClick={() => setMobileMenuOpen(false)}>Work</MobileNavLink>
+            <MobileNavLink href="#work" onClick={() => setMobileMenuOpen(false)}>Works</MobileNavLink>
             <MobileNavLink href="#artists" onClick={() => setMobileMenuOpen(false)}>Artists</MobileNavLink>
             <MobileNavLink href="#clients" onClick={() => setMobileMenuOpen(false)}>Clients</MobileNavLink>
             <MobileNavLink href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</MobileNavLink>

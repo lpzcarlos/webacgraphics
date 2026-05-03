@@ -35,7 +35,7 @@ export default function MarqueeClients() {
           const move = Math.floor(moveAccumulator);
           moveAccumulator -= move;
           // To move RIGHT TO LEFT, we INCREASE scrollLeft
-          scrollEl.scrollLeft += move;
+          scrollEl.scrollLeft -= move;
         }
       }
 

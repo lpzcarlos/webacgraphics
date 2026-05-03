@@ -27,17 +27,17 @@ export default function WorksGallery({ images }: Props) {
           transition={{ duration: 0.6, delay: (idx % 4) * 0.08 }}
           className="relative group overflow-hidden bg-bg-surface border border-transparent hover:border-white/20 transition-colors duration-300"
         >
-          <div className="relative w-full h-[220px] lg:h-[280px] overflow-hidden">
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 25vw"
-            />
-            {/* Subtle hover overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
+          <Image
+            src={src}
+            alt=""
+            width={0}
+            height={0}
+            sizes="(max-width: 768px) 50vw, 25vw"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+            className="transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          {/* Subtle hover overlay */}
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </motion.div>
       ))}
     </div>

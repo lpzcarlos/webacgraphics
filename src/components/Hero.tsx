@@ -44,20 +44,30 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col items-center gap-1 md:gap-4 select-none"
+          className="flex flex-col items-center gap-1 md:gap-4 select-none w-full"
         >
-          <div className="flex gap-3 md:gap-8 overflow-y-hidden">
+          <div className="flex gap-3 md:gap-8">
             {headlineWords1.map((word, i) => (
-              <motion.span key={i} variants={item} className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter">
-                {word}
-              </motion.span>
+              <div key={i} className="overflow-hidden py-1">
+                <motion.span
+                  variants={item}
+                  className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter block pr-2"
+                >
+                  {word}
+                </motion.span>
+              </div>
             ))}
           </div>
-          <div className="flex gap-3 md:gap-8 overflow-y-hidden">
+          <div className="flex gap-3 md:gap-8">
             {headlineWords2.map((word, i) => (
-              <motion.span key={i} variants={item} className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter">
-                {word}
-              </motion.span>
+              <div key={i} className="overflow-hidden py-1">
+                <motion.span
+                  variants={item}
+                  className="text-[clamp(3.5rem,12vw,12rem)] font-black leading-none tracking-tighter block pr-2"
+                >
+                  {word}
+                </motion.span>
+              </div>
             ))}
           </div>
         </motion.div>

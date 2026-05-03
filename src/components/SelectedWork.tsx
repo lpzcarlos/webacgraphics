@@ -29,24 +29,23 @@ export default function SelectedWork() {
             className="relative group overflow-hidden bg-bg-surface border border-transparent hover:border-white/20 transition-colors duration-300"
           >
             <Link href={`/artists/${work.artistSlug}`}>
-              <div className="relative w-full h-[220px] lg:h-[280px] overflow-hidden">
-                <Image
-                  src={work.image}
-                  alt={work.title}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-6 gap-2">
-                  <span className="text-secondary text-xs uppercase tracking-[0.2em] translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    {work.category}
-                  </span>
-                  <h3 className="text-white text-2xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                    {work.title}
-                  </h3>
-                </div>
+              <Image
+                src={work.image}
+                alt={work.title}
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 50vw, 25vw"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                className="transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4 gap-1 pointer-events-none">
+                <span className="text-secondary text-xs uppercase tracking-[0.2em] translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  {work.category}
+                </span>
+                <h3 className="text-white text-lg font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  {work.title}
+                </h3>
               </div>
             </Link>
           </motion.div>

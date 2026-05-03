@@ -38,11 +38,11 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
         if (moveAccumulator >= 1) {
           const move = Math.floor(moveAccumulator);
           moveAccumulator -= move;
-          
+
           if (direction === "left") {
-             scrollEl.scrollLeft += move;
+            scrollEl.scrollLeft += move;
           } else {
-             scrollEl.scrollLeft -= move;
+            scrollEl.scrollLeft -= move;
           }
         }
       }
@@ -122,10 +122,14 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
 
 export default function MarqueeArtists() {
   return (
-    <section id="artists" className="w-full py-20 md:py-[100px] bg-background border-t border-b border-border overflow-hidden select-none">
-      <h2 className="text-center text-3xl md:text-[3rem] font-black uppercase text-primary mb-10 md:mb-16 tracking-tight">
-        Our Artists
-      </h2>
+    <section id="artists" className="w-full py-20 md:py-[70px] bg-background overflow-hidden select-none">
+      <div className="flex items-center justify-center mb-10 md:mb-16 px-6 md:px-12">
+        <div className="h-[1px] bg-border w-1/4 md:w-1/3"></div>
+        <h2 className="px-6 text-2xl md:text-4xl font-black tracking-widest text-primary uppercase whitespace-nowrap">
+          Our Artists
+        </h2>
+        <div className="h-[1px] bg-border w-1/4 md:w-1/3"></div>
+      </div>
 
       <div className="flex flex-col gap-2 md:gap-4">
         <ArtistRow artists={artistsData.row1} direction="right" />

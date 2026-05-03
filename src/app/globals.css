@@ -12,15 +12,20 @@
     --text-muted: #444444;
     --accent: #FFFFFF;
     --accent-hover: #E0E0E0;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.2);
-    --glow: rgba(255,255,255,0.04);
-    --nav-bg: rgba(0,0,0,0.75);
-    --nav-border: rgba(255,255,255,0.1);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.2);
+    --glow: rgba(255, 255, 255, 0.04);
+    --nav-bg: rgba(0, 0, 0, 0.75);
+    --nav-border: rgba(255, 255, 255, 0.1);
   }
 
   body {
     @apply bg-[var(--bg)] text-[var(--text-primary)] antialiased overflow-x-hidden;
+  }
+
+  /* Offset anchor scroll so sections always appear below the fixed floating navbar */
+  section[id] {
+    scroll-margin-top: 80px;
   }
 }
 
@@ -41,25 +46,40 @@
     height: 100vh;
     z-index: 10;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.02) 50%, rgba(255,255,255,0));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0));
     background-size: 100% 8px;
     animation: scanline-sweep 8s linear infinite;
   }
 }
 
 @keyframes scanline-sweep {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scroll-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .animate-scroll-left {
