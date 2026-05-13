@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WorksGallery from "@/components/WorksGallery";
+import WorksGallery, { GalleryItemType } from "@/components/WorksGallery";
 
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"]);
 
@@ -15,6 +15,31 @@ function getImagesFromFolder(folderName: string): string[] {
     .readdirSync(absPath)
     .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
     .map((file) => `/media/works/${folderName}/${file}`);
+}
+
+/** Reads links.json from a subfolder and converts YouTube URLs to thumbnails */
+function getYoutubeLinksFromFolder(folderName: string): { src: string; link: string }[] {
+  const absPath = path.join(process.cwd(), "public", "media", "works", folderName, "links.json");
+  if (!fs.existsSync(absPath)) return [];
+  
+  try {
+    const fileContents = fs.readFileSync(absPath, 'utf-8');
+    const links: string[] = JSON.parse(fileContents);
+    
+    return links.map(link => {
+      let videoId = "";
+      const match = link.match(/[?&]v=([^&]+)/) || link.match(/youtu\.be\/([^?]+)/);
+      if (match) videoId = match[1];
+      
+      return {
+        src: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "",
+        link
+      };
+    }).filter(item => item.src !== "");
+  } catch (error) {
+    console.error(`Error reading links.json for ${folderName}:`, error);
+    return [];
+  }
 }
 
 // Section heading with decorative lines (server-safe, no framer-motion)
@@ -63,7 +88,10 @@ export default function WorksPage() {
 
       {/* Gallery Sections — each reads its own folder */}
       {sections.map(({ folder, title }) => {
-        const images = getImagesFromFolder(folder);
+        let images: GalleryItemType[] = getImagesFromFolder(folder);
+        const ytLinks = getYoutubeLinksFromFolder(folder);
+        images = [...images, ...ytLinks];
+
         return (
           <section key={folder} className="w-full py-20 px-6 md:px-12">
             <SectionHeading title={title} />
