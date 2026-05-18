@@ -14,6 +14,7 @@ function getImagesFromFolder(folderName: string): string[] {
   return fs
     .readdirSync(absPath)
     .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
     .map((file) => `/media/works/${folderName}/${file}`);
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import clientsData from "../data/clients.json";
 
 export default function MarqueeClients() {
@@ -13,41 +14,39 @@ export default function MarqueeClients() {
   const startX = useRef(0);
   const mouseDragThreshold = useRef(0);
 
+  const xPos = useRef(0);
+
   useEffect(() => {
     if (!scrollContainerRef.current) return;
     const scrollEl = scrollContainerRef.current;
+    const inner = scrollEl.firstElementChild as HTMLElement;
+    if (!inner) return;
 
     // Speed in pixels per millisecond
     const speed = 0.05;
     let lastTime = performance.now();
     let animationFrameId: number;
 
-    let moveAccumulator = 0;
-
     const tick = (time: number) => {
       const delta = time - lastTime;
       lastTime = time;
 
-      // Auto-scroll logic: only when not hovered and not dragging
+      // Auto-scroll logic: move towards the right
       if (!isHovered && !isDragging) {
-        moveAccumulator += speed * delta;
-        if (moveAccumulator >= 1) {
-          const move = Math.floor(moveAccumulator);
-          moveAccumulator -= move;
-          // To move RIGHT TO LEFT, we INCREASE scrollLeft
-          scrollEl.scrollLeft -= move;
-        }
+        xPos.current += speed * delta;
       }
 
       // Infinite wrapping logic
-      const currentWidth = scrollEl.scrollWidth / 2;
+      const currentWidth = inner.scrollWidth / 2;
       if (currentWidth > 0) {
-        if (scrollEl.scrollLeft >= currentWidth) {
-          scrollEl.scrollLeft -= currentWidth;
-        } else if (scrollEl.scrollLeft <= 0) {
-          scrollEl.scrollLeft += currentWidth;
+        if (xPos.current <= -currentWidth) {
+          xPos.current += currentWidth;
+        } else if (xPos.current > 0) {
+          xPos.current -= currentWidth;
         }
       }
+
+      inner.style.transform = `translate3d(${xPos.current}px, 0, 0)`;
 
       animationFrameId = requestAnimationFrame(tick);
     };
@@ -66,13 +65,13 @@ export default function MarqueeClients() {
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
+    if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX;
     const walk = (x - startX.current) * 1.5;
     mouseDragThreshold.current += Math.abs(x - startX.current);
     startX.current = x;
-    scrollContainerRef.current.scrollLeft -= walk;
+    xPos.current += walk;
   };
 
   const onMouseUpOrLeave = () => {
@@ -95,7 +94,7 @@ export default function MarqueeClients() {
       <div className="relative w-full overflow-hidden">
         <div
           ref={scrollContainerRef}
-          className="flex w-full whitespace-nowrap items-center overflow-x-auto py-4 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => {
             setIsHovered(false);
@@ -106,12 +105,14 @@ export default function MarqueeClients() {
           onMouseUp={onMouseUpOrLeave}
           onClickCapture={onClickCapture}
         >
-          {duplicatedClients.map((client, idx) => (
-            <ClientLogo key={`c-${idx}`} client={client} />
-          ))}
-          {duplicatedClients.map((client, idx) => (
-            <ClientLogo key={`d-${idx}`} client={client} />
-          ))}
+          <div className="flex w-max items-center whitespace-nowrap" style={{ willChange: "transform" }}>
+            {duplicatedClients.map((client, idx) => (
+              <ClientLogo key={`c-${idx}`} client={client} />
+            ))}
+            {duplicatedClients.map((client, idx) => (
+              <ClientLogo key={`d-${idx}`} client={client} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -133,20 +134,20 @@ function ClientLogo({ client }: { client: Client }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative h-full flex items-center justify-center transition-transform duration-300 ease-out" style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <div className="relative h-full w-[150px] flex items-center justify-center transition-transform duration-300 ease-out" style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}>
+        <Image
           src={client.logo_white}
           alt={`${client.name} logo`}
-          draggable={false}
-          className={`h-full w-auto object-contain transition-opacity duration-300 mix-blend-screen pointer-events-none ${hovered ? "opacity-0 absolute" : "opacity-50 relative"}`}
+          fill
+          sizes="150px"
+          className={`object-contain transition-opacity duration-300 mix-blend-screen pointer-events-none ${hovered ? "opacity-0" : "opacity-50"}`}
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={client.logo_color}
           alt={`${client.name} logo color`}
-          draggable={false}
-          className={`h-full w-auto object-contain transition-opacity duration-300 pointer-events-none ${hovered ? "opacity-100 relative" : "opacity-0 absolute"}`}
+          fill
+          sizes="150px"
+          className={`object-contain transition-opacity duration-300 pointer-events-none ${hovered ? "opacity-100" : "opacity-0"}`}
         />
       </div>
     </div>

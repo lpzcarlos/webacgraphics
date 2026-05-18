@@ -20,9 +20,6 @@ export default function Navbar() {
     <>
       <div className="fixed top-10 w-full flex justify-center z-50 pointer-events-none">
         <motion.nav
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
           className={`pointer-events-auto relative flex items-center justify-start md:justify-center px-8 py-4 rounded-full transition-all duration-300 w-[90%] md:w-fit border border-white/10
             ${scrolled ? "bg-black/75 backdrop-blur-xl" : "bg-transparent"}`}
         >
@@ -56,6 +53,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             className="md:hidden text-white absolute right-6"
+            aria-label="Abrir menú"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

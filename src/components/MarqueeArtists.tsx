@@ -20,42 +20,43 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
   const startX = useRef(0);
   const mouseDragThreshold = useRef(0);
 
+  const xPos = useRef(0);
+
   useEffect(() => {
     if (!scrollContainerRef.current) return;
     const scrollEl = scrollContainerRef.current;
+    // We will translate the inner container instead of scrolling
+    const inner = scrollEl.firstElementChild as HTMLElement;
+    if (!inner) return;
 
     const speed = 0.05;
     let lastTime = performance.now();
     let animationFrameId: number;
-    let moveAccumulator = 0;
 
     const tick = (time: number) => {
       const delta = time - lastTime;
       lastTime = time;
 
       if (!isHovered && !isDragging) {
-        moveAccumulator += speed * delta;
-        if (moveAccumulator >= 1) {
-          const move = Math.floor(moveAccumulator);
-          moveAccumulator -= move;
-
-          if (direction === "left") {
-            scrollEl.scrollLeft += move;
-          } else {
-            scrollEl.scrollLeft -= move;
-          }
+        if (direction === "left") {
+          xPos.current -= speed * delta;
+        } else {
+          xPos.current += speed * delta;
         }
       }
 
-      const currentWidth = scrollEl.scrollWidth / 2;
+      // Half the width of the inner content because we duplicated it
+      const currentWidth = inner.scrollWidth / 2;
+      
       if (currentWidth > 0) {
-        // We handle both bounds for both directions to allow smooth infinite loop even when dragged manually
-        if (scrollEl.scrollLeft <= 0) {
-          scrollEl.scrollLeft += currentWidth;
-        } else if (scrollEl.scrollLeft >= currentWidth) {
-          scrollEl.scrollLeft -= currentWidth;
+        if (xPos.current <= -currentWidth) {
+          xPos.current += currentWidth;
+        } else if (xPos.current > 0) {
+          xPos.current -= currentWidth;
         }
       }
+
+      inner.style.transform = `translate3d(${xPos.current}px, 0, 0)`;
 
       animationFrameId = requestAnimationFrame(tick);
     };
@@ -74,13 +75,13 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
+    if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX;
     const walk = (x - startX.current) * 1.5;
     mouseDragThreshold.current += Math.abs(x - startX.current);
     startX.current = x;
-    scrollContainerRef.current.scrollLeft -= walk;
+    xPos.current += walk;
   };
 
   const onMouseUpOrLeave = () => {
@@ -98,7 +99,7 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
     <div className="relative w-full overflow-hidden">
       <div
         ref={scrollContainerRef}
-        className="flex w-full whitespace-nowrap items-center overflow-x-auto py-4 md:py-6 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="w-full overflow-hidden py-4 md:py-6 cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => {
           setIsHovered(false);
@@ -109,12 +110,14 @@ function ArtistRow({ artists, direction }: { artists: Artist[], direction: "left
         onMouseUp={onMouseUpOrLeave}
         onClickCapture={onClickCapture}
       >
-        {duplicatedArtists.map((artist, idx) => (
-          <ArtistItem key={`a-${idx}`} artist={artist} />
-        ))}
-        {duplicatedArtists.map((artist, idx) => (
-          <ArtistItem key={`b-${idx}`} artist={artist} />
-        ))}
+        <div className="flex w-max items-center whitespace-nowrap" style={{ willChange: "transform" }}>
+          {duplicatedArtists.map((artist, idx) => (
+            <ArtistItem key={`a-${idx}`} artist={artist} />
+          ))}
+          {duplicatedArtists.map((artist, idx) => (
+            <ArtistItem key={`b-${idx}`} artist={artist} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -148,6 +151,7 @@ function ArtistItem({ artist }: { artist: Artist }) {
             src={artist.image}
             alt={artist.name}
             fill
+            sizes="(max-width: 768px) 120px, 160px"
             draggable={false}
             className="object-cover transition-all duration-400 pointer-events-none"
           />

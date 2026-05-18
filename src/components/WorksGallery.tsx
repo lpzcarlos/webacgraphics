@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
+import Lightbox from "./Lightbox";
 
 export type GalleryItemType = string | { src: string; link: string };
 
@@ -10,6 +12,8 @@ type Props = {
 };
 
 export default function WorksGallery({ images }: Props) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   if (images.length === 0) {
     return (
       <p className="text-center text-white/20 py-16 tracking-[0.3em] text-xs uppercase">
@@ -31,7 +35,7 @@ export default function WorksGallery({ images }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: (idx % 4) * 0.08 }}
-            className="relative group overflow-hidden bg-bg-surface border border-transparent hover:border-white/20 transition-colors duration-300 w-full aspect-square md:aspect-auto"
+            className="relative group overflow-hidden bg-bg-surface border border-transparent hover:border-white/20 transition-colors duration-300 w-full"
           >
             <Image
               src={src}
@@ -39,7 +43,7 @@ export default function WorksGallery({ images }: Props) {
               width={0}
               height={0}
               sizes="(max-width: 768px) 50vw, 25vw"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
               className="transition-transform duration-700 ease-out group-hover:scale-105"
             />
             {/* Subtle hover overlay */}
@@ -65,11 +69,22 @@ export default function WorksGallery({ images }: Props) {
                 {content}
               </a>
             ) : (
-              content
+              <div onClick={() => setLightboxIndex(idx)} className="cursor-pointer">
+                {content}
+              </div>
             )}
           </div>
         );
       })}
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={images.map(item => ({ src: typeof item === "string" ? item : item.src }))}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </div>
   );
 }

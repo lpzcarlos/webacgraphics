@@ -3,9 +3,19 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import worksData from "../data/works.json";
+import Lightbox from "./Lightbox";
 
 export default function SelectedWork() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const lightboxImages = worksData.map((work) => ({
+    src: work.image,
+    title: work.title,
+    category: work.category,
+  }));
+
   return (
     <section id="work" className="w-full py-20 md:py-[120px] px-6 md:px-12">
       {/* Section Title */}
@@ -28,7 +38,7 @@ export default function SelectedWork() {
             transition={{ duration: 0.6, delay: (idx % 4) * 0.08 }}
             className="relative group overflow-hidden bg-bg-surface border border-transparent hover:border-white/20 transition-colors duration-300"
           >
-            <Link href={`/artists/${work.artistSlug}`}>
+            <div onClick={() => setLightboxIndex(idx)} className="cursor-pointer">
               <Image
                 src={work.image}
                 alt={work.title}
@@ -47,7 +57,7 @@ export default function SelectedWork() {
                   {work.title}
                 </h3>
               </div>
-            </Link>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -68,6 +78,14 @@ export default function SelectedWork() {
           <span className="absolute inset-0 w-full h-full bg-white/20 blur-md group-hover:scale-150 transition-transform duration-500 rounded-full mix-blend-screen opacity-0 group-hover:opacity-100 pointer-events-none" />
         </Link>
       </motion.div>
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={lightboxImages}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </section>
   );
 }
