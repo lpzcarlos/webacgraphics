@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex items-center">
           <div className="relative w-[100px] h-[24px]">
             <Image
-              src="/media/logoac.png"
+              src="/media/logoac.webp"
               alt="Logo"
               fill
               className="object-contain"

@@ -34,7 +34,7 @@ export default function Navbar() {
             <Link href="/">
               <div className="relative w-[160px] h-[40px] md:w-[240px] md:h-[60px] flex items-center justify-center">
                 <Image
-                  src="/media/logoac.png"
+                  src="/media/logoac.webp"
                   alt="Logo"
                   fill
                   className="object-contain object-left md:object-center"

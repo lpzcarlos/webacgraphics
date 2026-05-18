@@ -3,42 +3,42 @@
     "id": 1,
     "title": "Jhayco Tour Identity",
     "category": "Visual Identity",
-    "image": "/media/disenoslanding/1jhayco.jpg",
+    "image": "/media/disenoslanding/1jhayco.webp",
     "artistSlug": "jhayco"
   },
   {
     "id": 2,
     "title": "Juan Magán Single Art",
     "category": "Art Direction",
-    "image": "/media/disenoslanding/2juanmagan.jpg",
+    "image": "/media/disenoslanding/2juanmagan.webp",
     "artistSlug": "juan-magan"
   },
   {
     "id": 3,
     "title": "Myke Towers Campaign",
     "category": "Campaign Design",
-    "image": "/media/disenoslanding/3myketowers.jpg",
+    "image": "/media/disenoslanding/3myketowers.webp",
     "artistSlug": "myke-towers"
   },
   {
     "id": 4,
     "title": "Omar Montes Album",
     "category": "Art Direction",
-    "image": "/media/disenoslanding/4omarmontes.jpg",
+    "image": "/media/disenoslanding/4omarmontes.webp",
     "artistSlug": "omar-montes"
   },
   {
     "id": 5,
     "title": "Omar Montes Tour",
     "category": "Visual Identity",
-    "image": "/media/disenoslanding/6omarmontes2.jpg",
+    "image": "/media/disenoslanding/6omarmontes2.webp",
     "artistSlug": "omar-montes"
   },
   {
     "id": 6,
     "title": "Yan Block Promo",
     "category": "Campaign Design",
-    "image": "/media/disenoslanding/5yanblock.jpg",
+    "image": "/media/disenoslanding/5yanblock.webp",
     "artistSlug": "yan-block"
   }
 ]
