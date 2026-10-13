@@ -146,17 +146,17 @@ function ArtistItem({ artist }: { artist: Artist }) {
   return (
     <div className="relative flex-shrink-0 mx-4 md:mx-8 group cursor-pointer w-[120px] h-[120px] md:w-[160px] md:h-[160px] hover:[&>a>div]:scale-110">
       <Link href={`/artists/${artist.slug}`} className="block w-full h-full">
-        <div className="relative w-full h-full rounded-full overflow-hidden transition-transform duration-400 ease-out">
+        <div className="relative w-full h-full rounded-full overflow-hidden transition-all duration-500 ease-out border border-white/10 group-hover:border-white/50 bg-bg-surface">
           <Image
             src={artist.image}
             alt={artist.name}
             fill
             sizes="(max-width: 768px) 120px, 160px"
             draggable={false}
-            className="object-cover transition-all duration-400 pointer-events-none"
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/50 transition-all duration-400 z-10 pointer-events-none">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-400 delay-75 text-white font-semibold text-xs md:text-sm tracking-wider text-center px-2 pointer-events-none">
+          <div className="absolute inset-0 flex flex-col justify-end items-center pb-3 md:pb-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+            <span className="text-white font-bold text-xs md:text-sm tracking-wide text-center px-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
               {artist.name}
             </span>
           </div>

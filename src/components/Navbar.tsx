@@ -25,8 +25,8 @@ export default function Navbar() {
         >
           {/* Desktop Links Left */}
           <div className="hidden md:flex w-[200px] justify-end items-center gap-6">
-            <NavLink href="#work">Works</NavLink>
-            <NavLink href="#artists">Artists</NavLink>
+            <NavLink href="/#work">Work</NavLink>
+            <NavLink href="/#artists">Artists</NavLink>
           </div>
 
           {/* Logo Center (Left on mobile) */}
@@ -35,7 +35,7 @@ export default function Navbar() {
               <div className="relative w-[160px] h-[40px] md:w-[240px] md:h-[60px] flex items-center justify-center">
                 <Image
                   src="/media/logoac.webp"
-                  alt="Logo"
+                  alt="AC Graphics Logo"
                   fill
                   className="object-contain object-left md:object-center"
                   priority
@@ -46,8 +46,8 @@ export default function Navbar() {
 
           {/* Desktop Links Right */}
           <div className="hidden md:flex w-[200px] justify-start items-center gap-6">
-            <NavLink href="#clients">Clients</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="/#clients">Clients</NavLink>
+            <NavLink href="/#contact">Contact</NavLink>
           </div>
 
           {/* Mobile Hamburger */}
@@ -70,10 +70,11 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 pt-20"
           >
-            <MobileNavLink href="#work" onClick={() => setMobileMenuOpen(false)}>Works</MobileNavLink>
-            <MobileNavLink href="#artists" onClick={() => setMobileMenuOpen(false)}>Artists</MobileNavLink>
-            <MobileNavLink href="#clients" onClick={() => setMobileMenuOpen(false)}>Clients</MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</MobileNavLink>
+            <MobileNavLink href="/#work" onClick={() => setMobileMenuOpen(false)}>Work</MobileNavLink>
+            <MobileNavLink href="/#artists" onClick={() => setMobileMenuOpen(false)}>Artists</MobileNavLink>
+            <MobileNavLink href="/#clients" onClick={() => setMobileMenuOpen(false)}>Clients</MobileNavLink>
+            <MobileNavLink href="/#contact" onClick={() => setMobileMenuOpen(false)}>Contact</MobileNavLink>
+            <MobileNavLink href="/works" onClick={() => setMobileMenuOpen(false)}>All Works</MobileNavLink>
           </motion.div>
         )}
       </AnimatePresence>

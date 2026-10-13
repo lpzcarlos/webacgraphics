@@ -12,7 +12,7 @@ export default function WhoWeAre() {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="w-full md:w-[40%] lg:w-[35%] rounded-3xl overflow-hidden relative"
         >
@@ -30,7 +30,7 @@ export default function WhoWeAre() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full md:w-[50%] lg:w-[40%] flex flex-col gap-6 md:gap-8 justify-center"
         >

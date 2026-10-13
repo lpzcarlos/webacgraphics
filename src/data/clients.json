@@ -78,5 +78,15 @@
     "name": "Arpa",
     "logo_white": "/media/logosempresas/LogoArpa_1.webp",
     "logo_color": "/media/logosempresas/LogoArpa_1.webp"
+  },
+  {
+    "name": "WLA",
+    "logo_white": "/media/logosempresas/LogoWLA_1.webp",
+    "logo_color": "/media/logosempresas/LogoWLA_1.webp"
+  },
+  {
+    "name": "Zamara Music",
+    "logo_white": "/media/logosempresas/LogoZamara_1.webp",
+    "logo_color": "/media/logosempresas/LogoZamara_1.webp"
   }
 ]

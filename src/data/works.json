@@ -4,41 +4,175 @@
     "title": "Jhayco Tour Identity",
     "category": "Visual Identity",
     "image": "/media/disenoslanding/1jhayco.webp",
-    "artistSlug": "jhayco"
+    "artistSlug": "jhayco",
+    "featured": true
   },
   {
     "id": 2,
     "title": "Juan Magán Single Art",
     "category": "Art Direction",
     "image": "/media/disenoslanding/2juanmagan.webp",
-    "artistSlug": "juan-magan"
+    "artistSlug": "juan-magan",
+    "featured": true
   },
   {
     "id": 3,
     "title": "Myke Towers Campaign",
     "category": "Campaign Design",
     "image": "/media/disenoslanding/3myketowers.webp",
-    "artistSlug": "myke-towers"
+    "artistSlug": "myke-towers",
+    "featured": true
   },
   {
     "id": 4,
     "title": "Omar Montes Album",
     "category": "Art Direction",
     "image": "/media/disenoslanding/4omarmontes.webp",
-    "artistSlug": "omar-montes"
+    "artistSlug": "omar-montes",
+    "featured": true
   },
   {
     "id": 5,
     "title": "Omar Montes Tour",
     "category": "Visual Identity",
     "image": "/media/disenoslanding/6omarmontes2.webp",
-    "artistSlug": "omar-montes"
+    "artistSlug": "omar-montes",
+    "featured": true
   },
   {
     "id": 6,
     "title": "Yan Block Promo",
     "category": "Campaign Design",
     "image": "/media/disenoslanding/5yanblock.webp",
-    "artistSlug": "yan-block"
+    "artistSlug": "yan-block",
+    "featured": true
+  },
+  {
+    "id": 7,
+    "title": "Omar Montes & Lola Índigo — El Pantalón",
+    "category": "Art Direction",
+    "image": "/media/works/singles/elpantalon.webp",
+    "artistSlug": "omar-montes",
+    "featured": true
+  },
+  {
+    "id": 8,
+    "title": "Chanel Single Art",
+    "category": "Art Direction",
+    "image": "/media/works/singles/chanel.webp",
+    "artistSlug": "chanel",
+    "featured": true
+  },
+  {
+    "id": 9,
+    "title": "Anuel AA Campaign",
+    "category": "Campaign Design",
+    "image": "/media/works/banners/1anuell.webp",
+    "artistSlug": "anuel-aa"
+  },
+  {
+    "id": 10,
+    "title": "Ozuna Global Promo",
+    "category": "Campaign Design",
+    "image": "/media/works/banners/5ozuna.webp",
+    "artistSlug": "ozuna"
+  },
+  {
+    "id": 11,
+    "title": "Lunay Campaign Banner",
+    "category": "Campaign Design",
+    "image": "/media/works/banners/4lunayy.webp",
+    "artistSlug": "lunay"
+  },
+  {
+    "id": 12,
+    "title": "Lunay ft. Beéle Single Promo",
+    "category": "Campaign Design",
+    "image": "/media/works/banners/6lunay+beele.webp",
+    "artistSlug": "lunay"
+  },
+  {
+    "id": 13,
+    "title": "Ana Mena Identity & Logo",
+    "category": "Visual Identity",
+    "image": "/media/works/logos/anamena.webp",
+    "artistSlug": "ana-mena"
+  },
+  {
+    "id": 14,
+    "title": "Adexe Y Nau Campaign",
+    "category": "Campaign Design",
+    "image": "/media/works/banners/7adexe.webp",
+    "artistSlug": "adexe-y-nau"
+  },
+  {
+    "id": 15,
+    "title": "Adexe Y Nau Live Poster",
+    "category": "Events Poster",
+    "image": "/media/works/events/3AYN.webp",
+    "artistSlug": "adexe-y-nau"
+  },
+  {
+    "id": 16,
+    "title": "AM Album Design",
+    "category": "Physical & Digital Album",
+    "image": "/media/works/album-design/AM.webp",
+    "artistSlug": "am"
+  },
+  {
+    "id": 17,
+    "title": "Depol Album Artwork",
+    "category": "Physical & Digital Album",
+    "image": "/media/works/album-design/Depol.webp",
+    "artistSlug": "depol"
+  },
+  {
+    "id": 18,
+    "title": "Myke Towers Tour 2025",
+    "category": "Tour Design",
+    "image": "/media/works/tours/MykeTowers2025.webp",
+    "artistSlug": "myke-towers"
+  },
+  {
+    "id": 19,
+    "title": "Jhayco Europe Tour",
+    "category": "Tour Design",
+    "image": "/media/works/tours/JhayCo_EuropeTour_Feed.webp",
+    "artistSlug": "jhayco"
+  },
+  {
+    "id": 20,
+    "title": "Omar Montes — La Sevillana",
+    "category": "Art Direction",
+    "image": "/media/works/singles/lasevillana.webp",
+    "artistSlug": "omar-montes"
+  },
+  {
+    "id": 21,
+    "title": "Omar Montes — Goteras",
+    "category": "Art Direction",
+    "image": "/media/works/singles/goterascover.webp",
+    "artistSlug": "omar-montes"
+  },
+  {
+    "id": 22,
+    "title": "Omar Montes — Oh Baby",
+    "category": "Art Direction",
+    "image": "/media/works/singles/ohbaby.webp",
+    "artistSlug": "omar-montes"
+  },
+  {
+    "id": 23,
+    "title": "Omar Montes Eterno Tour",
+    "category": "Tour Design",
+    "image": "/media/works/tours/EternoTour2_V2_Feed.webp",
+    "artistSlug": "omar-montes"
+  },
+  {
+    "id": 24,
+    "title": "Omar Montes Official Logo",
+    "category": "Visual Identity",
+    "image": "/media/works/logos/omar montes.webp",
+    "artistSlug": "omar-montes"
   }
 ]
